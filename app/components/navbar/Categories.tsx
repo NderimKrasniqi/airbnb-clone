@@ -66,7 +66,7 @@ export const categories = [
   {
     label: 'Skiing',
     icon: FaSkiing,
-    description: 'This property has skiing activies!',
+    description: 'This property has skiing activities!',
   },
   {
     label: 'Castles',
