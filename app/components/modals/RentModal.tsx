@@ -7,11 +7,7 @@ import Modal from './Modal';
 import Heading from '../Heading';
 import { categories } from '../navbar/Categories';
 import CategoryInput from '../inputs/CategoryInput';
-import {
-  FieldValues,
-  SubmitHandler,
-  useForm,
-} from 'react-hook-form';
+import { FieldValues, SubmitHandler, useForm } from 'react-hook-form';
 import CountrySelect from '../inputs/CountrySelect';
 import dynamic from 'next/dynamic';
 import Counter from '../inputs/Counter';
@@ -67,7 +63,7 @@ const RentModal = () => {
 
   const Map = useMemo(
     () => dynamic(() => import('../Map'), { ssr: false }),
-    [location]
+    []
   );
 
   const setCustomValue = (id: string, value: any) => {
@@ -131,9 +127,7 @@ const RentModal = () => {
         {categories.map((item) => (
           <div key={item.label} className="col-span-1">
             <CategoryInput
-              onClick={(category) =>
-                setCustomValue('category', category)
-              }
+              onClick={(category) => setCustomValue('category', category)}
               selected={category === item.label}
               label={item.label}
               icon={item.icon}
@@ -153,9 +147,7 @@ const RentModal = () => {
         />
         <CountrySelect
           value={location}
-          onChange={(value) =>
-            setCustomValue('location', value)
-          }
+          onChange={(value) => setCustomValue('location', value)}
         />
         <Map center={location?.latlng} />
       </div>
@@ -173,27 +165,21 @@ const RentModal = () => {
           title="Guests"
           subtitle="How many guests do you allow?"
           value={guestCount}
-          onChange={(value) =>
-            setCustomValue('guestCount', value)
-          }
+          onChange={(value) => setCustomValue('guestCount', value)}
         />
         <hr />
         <Counter
           title="Rooms"
           subtitle="How many rooms do you have?"
           value={roomCount}
-          onChange={(value) =>
-            setCustomValue('roomCount', value)
-          }
+          onChange={(value) => setCustomValue('roomCount', value)}
         />
         <hr />
         <Counter
           title="Bathrooms"
           subtitle="How many bathrooms do you have?"
           value={bathroomCount}
-          onChange={(value) =>
-            setCustomValue('bathroomCount', value)
-          }
+          onChange={(value) => setCustomValue('bathroomCount', value)}
         />
       </div>
     );
@@ -208,9 +194,7 @@ const RentModal = () => {
         />
         <ImageUpload
           value={imageSrc}
-          onChange={(value) =>
-            setCustomValue('imageSrc', value)
-          }
+          onChange={(value) => setCustomValue('imageSrc', value)}
         />
       </div>
     );
@@ -270,9 +254,7 @@ const RentModal = () => {
       onSubmit={handleSubmit(onSubmit)}
       actionLabel={actionLabel}
       secondaryActionLabel={secondaryActionLabel}
-      secondaryAction={
-        step === STEPS.CATEGORY ? undefined : onBack
-      }
+      secondaryAction={step === STEPS.CATEGORY ? undefined : onBack}
       title="Airbnb your home"
       body={bodyContent}
     />
